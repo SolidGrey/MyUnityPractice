@@ -63,8 +63,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Client\Scripts\BuildLevel.cs" />
+    <Compile Include="Assets\Client\Scripts\EnemyManager.cs" />
+    <Compile Include="Assets\Client\Scripts\ObjectPooler.cs" />
+    <Compile Include="Assets\Client\Scripts\Player.cs" />
     <Compile Include="Assets\Client\Scripts\PushButton.cs" />
+    <Compile Include="Assets\Client\Scripts\SpawnEnemy.cs" />
     <Compile Include="Assets\Client\Scripts\Text Aligment.cs" />
+    <Compile Include="Assets\SpawnMob.cs" />
     <None Include="Assets\Client\Resources\Level1.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Unity Projects/Tower Defence/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
