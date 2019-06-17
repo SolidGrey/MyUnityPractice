@@ -62,8 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Client\Scripts\BuildLevel.cs" />
+    <Compile Include="Assets\Client\Scripts\Enemy.cs" />
     <Compile Include="Assets\Client\Scripts\EnemyManager.cs" />
+    <Compile Include="Assets\Client\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Client\Scripts\ObjectPooler.cs" />
     <Compile Include="Assets\Client\Scripts\Player.cs" />
     <Compile Include="Assets\Client\Scripts\PushButton.cs" />

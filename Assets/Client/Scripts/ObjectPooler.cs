@@ -36,6 +36,7 @@ public class ObjectPooler : MonoBehaviour
         if (willGrow)
         {
             GameObject obj = Instantiate(pooledObject);
+            obj.SetActive(false);
             pooledObjects.Add(obj);
             return pooledObjects[pooledObjects.Count - 1];
         }
