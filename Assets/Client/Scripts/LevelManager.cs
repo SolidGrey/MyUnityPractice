@@ -36,6 +36,7 @@ public class LevelManager : MonoBehaviour
         string[] gridPattern = LoadGridPattern(1);
         Cell[,] cellMatrix = BuildLevel(gridPattern);
         List<NNode> graph = BuildGraph(cellMatrix);
+        FindRoutes(graph);
     }
 
     // Import level from resources. Input parameter requires level number
@@ -108,15 +109,15 @@ public class LevelManager : MonoBehaviour
                 {
                     //Look for cells adjacent to the selected
                     List<Cell> cellNeighbors = new List<Cell>();
-                    if (i > 0 && matrix[i - 1, j].isRoad)
-                        cellNeighbors.Add(matrix[i - 1, j]);
-                    if (i > 0 && j > 0 && matrix[i - 1, j - 1].isRoad)
-                        cellNeighbors.Add(matrix[i - 1, j - 1]);
-                    if (j < matrix.GetLength(1) - 1 && matrix[i, j + 1].isRoad)
-                        cellNeighbors.Add(matrix[i, j + 1]);
-                    if (j < matrix.GetLength(1) - 1 && i < matrix.GetLength(0) - 1 && matrix[i + 1, j + 1].isRoad)
-                        cellNeighbors.Add(matrix[i + 1, j + 1]);
-                    nodes.Add(new NNode() {cell = matrix[i, j], neighbors = cellNeighbors});
+                    if (i > 0 && matrix[i-1,j].isRoad)
+                        cellNeighbors.Add(matrix[i-1,j]);
+                    if (j < matrix.GetLength(1)-1 && matrix[i,j+1].isRoad)
+                        cellNeighbors.Add(matrix[i,j+1]);
+                    if (i < matrix.GetLength(0)-1 && matrix[i+1,j].isRoad)
+                        cellNeighbors.Add(matrix[i+1,j]);
+                    if (j > 0 && matrix[i,j-1].isRoad)
+                        cellNeighbors.Add(matrix[i,j-1]);
+                    nodes.Add(new NNode() { cell = matrix[i,j], neighbors = cellNeighbors });
                 }
             }
         }
@@ -126,43 +127,44 @@ public class LevelManager : MonoBehaviour
     //Return List with routes for enemy
     List<List<Cell>> FindRoutes(List<NNode> nGraph) //not ready
     {
-        //Search despawners
         List<List<Cell>> routes = new List<List<Cell>>();
-        for (int i = 0; i < nGraph.Count; i++)
-        {   
-            if(nGraph[i].cell.isDespawn)
-            {
-                //Build distances graph
-                int distance = 1; //1 despawner position
-                List<DNode> dGraph = new List<DNode>();
-                int[] distances = new int[nGraph.Count];
-                Queue<int> queue = new Queue<int>();
-                distances[i] = distance;
-                queue.Enqueue(i);
-                dGraph.Add(new DNode { cell = nGraph[i].cell, distance = distances[i] });
-                while (queue.Count > 0)
-                {
-                    int firstIndex = queue.Dequeue();
 
-                    //Search neighbors of cell with first index in queue
-                    for (int j = 0; j < nGraph[firstIndex].neighbors.Count; j++)
+        //Search despawners and build distances graphs
+        List<List<DNode>> dGraphs = new List<List<DNode>>();
+        for (int i = 0; i < nGraph.Count; i++)
+            if (nGraph[i].cell.isDespawn)
+                dGraphs.Add(buildDistancesGraph(i));
+        return null;
+
+        //Build distances graph. Use nodes graph
+        List<DNode> buildDistancesGraph(int despawnIndex)
+        {
+            List<DNode> dGraph = new List<DNode>();
+            int[] distances = new int[nGraph.Count];
+            Queue<int> queue = new Queue<int>();
+            distances[despawnIndex] = 1; //1 despawner start distance
+            queue.Enqueue(despawnIndex);
+            dGraph.Add(new DNode { cell = nGraph[despawnIndex].cell, distance = distances[despawnIndex] });
+            while (queue.Count > 0)
+            {
+                int firstIndex = queue.Dequeue();
+                //Search neighbors of cell with first index in queue
+                for (int i = 0; i < nGraph[firstIndex].neighbors.Count; i++)
+                {
+                    for (int j = 0; j < nGraph.Count; j++)
                     {
-                        for (int k = 0; k < nGraph.Count; k++)
+                        if (nGraph[firstIndex].neighbors[i].transform == nGraph[j].cell.transform && distances[j] == 0)
                         {
-                            if (nGraph[firstIndex].neighbors[j].transform == nGraph[k].cell.transform && distances[k] == 0)
-                            {
-                                queue.Enqueue(k);
-                                distances[k] = distances[firstIndex] + 1;
-                                dGraph.Add(new DNode { cell = nGraph[k].cell, distance = distance });
-                            }
+                            queue.Enqueue(j);
+                            distances[j] = distances[firstIndex] + 1;
+                            dGraph.Add(new DNode { cell = nGraph[j].cell, distance = distances[j] });
                         }
                     }
                 }
-
-                //На основе полученного dGraph нужно создать маршруты и добавить их в лист!!!!!!!!!!!!!!!!!!!!
             }
+            return dGraph;
         }
-        return null;
+
     }
     
 }
