@@ -5,11 +5,12 @@ using System;
 
 public class LevelManager : MonoBehaviour
 {
-    public GameObject map;
     public GameObject field;
     public GameObject road;
     public GameObject spawner;
     public GameObject despawner;
+
+    public List<List<Transform>> routes;
 
     public struct Cell
     {
@@ -31,7 +32,7 @@ public class LevelManager : MonoBehaviour
         string[] gridPattern = LoadGridPattern(1);
         Cell[,] cellMatrix = BuildLevel(gridPattern);
         List<Node> graph = BuildGraph(cellMatrix);
-        List<List<Transform>> routes = FindRoutes(graph);
+        routes = FindRoutes(graph);
 
         for (int i = 0; i <routes.Count; i++)
         {
@@ -76,19 +77,19 @@ public class LevelManager : MonoBehaviour
                 switch (gridPattern[i][j])
                 {
                     case '0':
-                        Instantiate(field, position, Quaternion.identity, map.transform);
+                        Instantiate(field, position, Quaternion.identity, gameObject.transform);
                         break;
                     case '1':
-                        matrix[i, j].transform = Instantiate(road, position, Quaternion.identity, map.transform).transform;
+                        matrix[i, j].transform = Instantiate(road, position, Quaternion.identity, gameObject.transform).transform;
                         matrix[i, j].isRoad = true;
                         break;
                     case 'I':
-                        matrix[i, j].transform = Instantiate(spawner, position, Quaternion.identity, map.transform).transform;
+                        matrix[i, j].transform = Instantiate(spawner, position, Quaternion.identity, gameObject.transform).transform;
                         matrix[i, j].isSpawn = true;
                         matrix[i, j].isRoad = true;
                         break;
                     case 'O':
-                        matrix[i, j].transform = Instantiate(despawner, position, Quaternion.identity, map.transform).transform;
+                        matrix[i, j].transform = Instantiate(despawner, position, Quaternion.identity, gameObject.transform).transform;
                         matrix[i, j].isDespawn = true;
                         matrix[i, j].isRoad = true;
                         break;
@@ -185,7 +186,8 @@ public class LevelManager : MonoBehaviour
                 {
                     for (int j = 0; j < dGraph.Count; j++) //Finding neighbor node
                     {
-                        if (currentNode.neighbors[i].transform == dGraph[j].cell.transform && currentNode.distance < dGraph[j].distance) //Add Transform to route if his distance more then current node
+                        //Add Transform to route if his distance more then current node
+                        if (currentNode.neighbors[i].transform == dGraph[j].cell.transform && currentNode.distance < dGraph[j].distance) 
                         {
                             if (oneBrunch)
                             {
@@ -194,7 +196,7 @@ public class LevelManager : MonoBehaviour
                                 oneBrunch = false;
                             }
                             else
-                                fillingRoutes(dGraph, route, dGraph[j]);
+                                fillingRoutes(dGraph, route, dGraph[j]); //Creates a route that will lead the other way
                         }
                     }
                 }

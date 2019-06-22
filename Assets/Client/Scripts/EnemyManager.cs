@@ -4,24 +4,45 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public Player player;
-    public ObjectPooler objectPooler;
-    public float spawnTime = 5f;
-
-    int wave = 1;
-
-    // Start is called before the first frame update
-    void Start()
+    [System.Serializable]
+    public class spawnEnemy
     {
-        for (int i = 0; i < wave; i++)
-            InvokeRepeating("Spawn", spawnTime, spawnTime);
+        public ObjectPooler pooler;
+        public float cooldown;
     }
 
-    void Spawn()
+    public Player player;
+    public LevelManager map;
+    public int waves = 3;
+    public spawnEnemy[] enemy;
+
+    int counter;
+ 
+    //Start is called before the first frame update
+    void Start()
+    {
+        for (int i = 0; i < waves; i++)
+            for (int j = 0; j < enemy.Length; j++)
+            {
+                //InvokeRepeating("SpawnEnemy", enemy[j].cooldown, enemy[j].cooldown);
+            }
+            
+    }
+
+    void SpawnEnemy()
     {
         if (player.health <= 0f)
             return;
-        objectPooler.GetPooledObject();
+        //Debug.Log("Counter " + counter + " enemy.count " + enemy.Length);
+        GameObject enemyObj = this.enemy[counter].pooler.GetPooledObject();
+        Enemy enemyParam = enemyObj.GetComponent<Enemy>();
+        if (enemyParam != null)
+        {
+            int route = Random.Range(0, map.routes.Count - 1);
+            enemyParam.path = map.routes[route].ToArray();
+            Debug.Log("map.routes[route] " + map.routes[route].Count);
+        }
+        enemyObj.SetActive(true);
     }
 
 
