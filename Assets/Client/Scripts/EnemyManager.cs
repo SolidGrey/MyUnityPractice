@@ -5,36 +5,50 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     [System.Serializable]
-    public class spawnEnemy
+    public class SpawnEnemyParam
     {
         public ObjectPooler pooler;
-        public float cooldown;
+        public float cooldown; //Пока не используется
     }
-
     public Player player;
     public LevelManager map;
     public int waves = 3;
-    public spawnEnemy[] enemy;
-
-    int counter;
+    public float pauseBetweenWaves = 5f;
+    public float pauseBetweenSpawns = 0.3f;
+    public SpawnEnemyParam[] enemy;
  
+
     //Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < waves; i++)
-            for (int j = 0; j < enemy.Length; j++)
-            {
-                //InvokeRepeating("SpawnEnemy", enemy[j].cooldown, enemy[j].cooldown);
-            }
-            
+         StartCoroutine(Wait());
     }
 
-    void SpawnEnemy()
+    IEnumerator Wait()
+    {
+        Debug.Log("Hey");
+        int enemyMult = 1;
+        for (int i = 0; i < waves; i++)
+        {
+            for (int j = 0; j < enemy.Length; j++)
+            {
+                for (int k = 0; k < enemyMult; k++)
+                {
+                    SpawnEnemy(j);
+                    yield return new WaitForSeconds(pauseBetweenSpawns);
+                }
+                enemyMult++;
+            }
+            yield return new WaitForSeconds(pauseBetweenWaves);
+        }
+        
+    }
+
+    void SpawnEnemy(int index)
     {
         if (player.health <= 0f)
             return;
-        //Debug.Log("Counter " + counter + " enemy.count " + enemy.Length);
-        GameObject enemyObj = this.enemy[counter].pooler.GetPooledObject();
+        GameObject enemyObj = enemy[index].pooler.GetPooledObject();
         Enemy enemyParam = enemyObj.GetComponent<Enemy>();
         if (enemyParam != null)
         {

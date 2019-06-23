@@ -924,7 +924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &400050
 Transform:
   m_ObjectHideFlags: 0
@@ -973,8 +973,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18a0322b603be045902ec4bda8d6644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelManager: {fileID: 0}
   health: 3
   bounty: 1
   damage: 1
-  speed: 2
+  speed: 10
+  path: []
