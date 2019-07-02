@@ -6,4 +6,6 @@ public class Player : MonoBehaviour
 {
     public int health = 100;
     public int gold = 10;
+
+
 }

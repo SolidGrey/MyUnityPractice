@@ -8,25 +8,24 @@ public class EnemyManager : MonoBehaviour
     public class SpawnEnemyParam
     {
         public ObjectPooler pooler;
-        public float cooldown; //Пока не используется
+        public float cooldown;
     }
     public Player player;
+    public GameObject canvas;
     public LevelManager map;
     public int waves = 3;
     public float pauseBetweenWaves = 5f;
-    public float pauseBetweenSpawns = 0.3f;
     public SpawnEnemyParam[] enemy;
  
 
     //Start is called before the first frame update
     void Start()
     {
-         StartCoroutine(Wait());
+        StartCoroutine(SendWaves());
     }
 
-    IEnumerator Wait()
+    IEnumerator SendWaves()
     {
-        Debug.Log("Hey");
         int enemyMult = 1;
         for (int i = 0; i < waves; i++)
         {
@@ -35,7 +34,7 @@ public class EnemyManager : MonoBehaviour
                 for (int k = 0; k < enemyMult; k++)
                 {
                     SpawnEnemy(j);
-                    yield return new WaitForSeconds(pauseBetweenSpawns);
+                    yield return new WaitForSeconds(enemy[j].cooldown);
                 }
                 enemyMult++;
             }
@@ -52,9 +51,9 @@ public class EnemyManager : MonoBehaviour
         Enemy enemyParam = enemyObj.GetComponent<Enemy>();
         if (enemyParam != null)
         {
-            int route = Random.Range(0, map.routes.Count - 1);
+            int route = Random.Range(0, map.routes.Count);
+            Debug.Log("Routes " + map.routes.Count);
             enemyParam.path = map.routes[route].ToArray();
-            Debug.Log("map.routes[route] " + map.routes[route].Count);
         }
         enemyObj.SetActive(true);
     }

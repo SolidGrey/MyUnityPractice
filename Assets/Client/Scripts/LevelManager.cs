@@ -173,12 +173,14 @@ public class LevelManager : MonoBehaviour
             return dGraph;
         }
 
+        //Fill posible routes in Routes List
         void fillingRoutes(List<Node> dGraph, List<Transform> prevRoute, Node startNode)
         {
             Node currentNode = startNode;
             List<Transform> route = new List<Transform>();
+            bool hasNeighbors = true;
             route.AddRange(prevRoute);
-            do
+            while (hasNeighbors)
             {
                 bool oneBrunch = true;
                 Node nextNode = currentNode;
@@ -187,7 +189,7 @@ public class LevelManager : MonoBehaviour
                     for (int j = 0; j < dGraph.Count; j++) //Finding neighbor node
                     {
                         //Add Transform to route if his distance more then current node
-                        if (currentNode.neighbors[i].transform == dGraph[j].cell.transform && currentNode.distance < dGraph[j].distance) 
+                        if (currentNode.neighbors[i].transform == dGraph[j].cell.transform && currentNode.distance < dGraph[j].distance)
                         {
                             if (oneBrunch)
                             {
@@ -196,12 +198,17 @@ public class LevelManager : MonoBehaviour
                                 oneBrunch = false;
                             }
                             else
+                            {
                                 fillingRoutes(dGraph, route, dGraph[j]); //Creates a route that will lead the other way
+                            }
+
                         }
                     }
                 }
+                if (currentNode.cell.transform == nextNode.cell.transform)
+                    hasNeighbors = false;
                 currentNode = nextNode;
-            } while (currentNode.neighbors.Count > 1);
+            }
 
             if (currentNode.cell.isSpawn)
             {

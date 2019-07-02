@@ -8,12 +8,12 @@ public class Enemy : MonoBehaviour
     public int bounty = 1;
     public int damage = 1;
     public float speed = 2f;
+    [HideInInspector]
     public Transform[] path;
     int waypointIndex = 0;
 
     void OnEnable()
     {
-        Debug.Log("path.Length " + path.Length);
         gameObject.transform.position = path[path.Length - 1].position;
         waypointIndex = path.Length - 2;
     }
