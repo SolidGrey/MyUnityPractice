@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FreeCell
   - OccupiedCell
+  - UICamera
   layers:
   - Default
   - TransparentFX

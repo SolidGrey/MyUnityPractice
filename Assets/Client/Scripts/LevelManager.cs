@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -9,6 +10,17 @@ public class LevelManager : MonoBehaviour
     public GameObject road;
     public GameObject spawner;
     public GameObject despawner;
+    public GameObject uI;
+    public GameObject towerButton;
+
+    public AvailableBuildings[] availableBuildings;
+
+    [System.Serializable]
+    public struct AvailableBuildings
+    {
+        public GameObject building;
+        public string hotkey;
+    }
 
     public List<List<Transform>> routes;
 
@@ -33,15 +45,7 @@ public class LevelManager : MonoBehaviour
         Cell[,] cellMatrix = BuildLevel(gridPattern);
         List<Node> graph = BuildGraph(cellMatrix);
         routes = FindRoutes(graph);
-
-        for (int i = 0; i <routes.Count; i++)
-        {
-            for (int j = 0; j < routes[i].Count; j++)
-            {
-                Debug.Log("x:" + routes[i][j].position.x + " z:" + routes[i][j].position.z);
-            }
-            Debug.Log("----------------------");
-        }
+        InitializeUi();
     }
 
     // Import level from resources. Input parameter requires level number
@@ -219,4 +223,43 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private void InitializeUi()
+    {
+        Transform towerSelector = uI.transform.Find("Canvas/TowerSelector");
+        for (int i = 0; i < availableBuildings.Length; i++)
+        {
+            if (availableBuildings[i].building != null && availableBuildings[i].hotkey != null)
+            {
+                GameObject button = Instantiate(towerButton);
+                button.transform.SetParent(towerSelector, false);
+                button.transform.localPosition = new Vector3(0, 0, 0);
+
+                Text name = button.transform.Find("Button/Name").GetComponent(typeof(Text)) as Text;
+                name.text = availableBuildings[i].building.name;
+
+                Text hotkey = button.transform.Find("Button/Hotkey").GetComponent(typeof(Text)) as Text;
+                hotkey.text = availableBuildings[i].hotkey;
+
+                GameObject building = Instantiate(availableBuildings[i].building);
+                building.transform.SetParent(button.transform.Find("TowerSpot").transform, false);
+                building.transform.localScale = Vector3.one;
+                ChangeChildrenLayers(building.transform, "3D Object UI");
+            }
+            else
+                Debug.LogError("Property in Available Buildings is empty. Index: " + i);
+        }
+
+        void ChangeChildrenLayers(Transform current, string layerName)
+        {
+            current.gameObject.layer = LayerMask.NameToLayer(layerName);
+            foreach(Transform child in current)
+            {
+                if (child.childCount > 0)
+                    ChangeChildrenLayers(child, layerName);
+                else
+                    child.gameObject.layer = LayerMask.NameToLayer(layerName);
+            }
+        }
+
+    }
 }

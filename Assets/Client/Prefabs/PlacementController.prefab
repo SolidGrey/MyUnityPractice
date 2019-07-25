@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3682589741034709583
+--- !u!1 &297491527662335670
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3682589741034709569}
-  - component: {fileID: 3682589741034709568}
+  - component: {fileID: 297491527662335668}
+  - component: {fileID: 297491527662335671}
   m_Layer: 0
-  m_Name: Map
+  m_Name: PlacementController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3682589741034709569
+--- !u!4 &297491527662335668
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3682589741034709583}
+  m_GameObject: {fileID: 297491527662335670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10.3, z: 0}
+  m_LocalPosition: {x: 27.438469, y: 456.66382, z: 128.85542}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3682589741034709568
+--- !u!114 &297491527662335671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3682589741034709583}
+  m_GameObject: {fileID: 297491527662335670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 536123e655566944187f822479c77b2d, type: 3}
+  m_Script: {fileID: 11500000, guid: c94c5a2d3eb8f3947b12a9317cbcffe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field: {fileID: 2767787959890598059, guid: c5caebaa36ecf294bbdfa503fd1c289e, type: 3}
-  road: {fileID: 2767787959890598059, guid: d52cd0eee989a6b44bed6b35475c9478, type: 3}
-  spawner: {fileID: 2767787959890598059, guid: b29eac722034c3b45bcfce80d71939a1, type: 3}
-  despawner: {fileID: 2767787959890598059, guid: 3fdb5d789c944f1469de19a6bcf0ebe5,
-    type: 3}
-  uI: {fileID: 0}
-  towerButton: {fileID: 0}
-  availableBuildings: []
+  levelManager: {fileID: 0}

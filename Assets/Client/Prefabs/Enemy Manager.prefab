@@ -44,7 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  canvas: {fileID: 0}
+  map: {fileID: 0}
   waves: 3
+  pauseBetweenWaves: 5
   enemy:
   - pooler: {fileID: 0}
     cooldown: 5
