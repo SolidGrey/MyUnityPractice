@@ -12,7 +12,9 @@ public class PlacementControl : MonoBehaviour
         if (handlingObject)
         {
             MoveHandlingObjectToMouse();
+            ReleaseIfClicked();
         }
+
     }
 
     public void HandleObject(GameObject pressedButton)
@@ -42,5 +44,11 @@ public class PlacementControl : MonoBehaviour
         }
     }
 
-
+    private void ReleaseIfClicked()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            handlingObject = null;
+        }
+    }
 }
