@@ -47,12 +47,14 @@ public class EnemyManager : MonoBehaviour
     {
         if (player.health <= 0f)
             return;
+
         GameObject enemyObj = enemy[index].pooler.GetPooledObject();
+
         Enemy enemyParam = enemyObj.GetComponent<Enemy>();
+
         if (enemyParam != null)
         {
             int route = Random.Range(0, map.routes.Count);
-            Debug.Log("Routes " + map.routes.Count);
             enemyParam.path = map.routes[route].ToArray();
         }
         enemyObj.SetActive(true);

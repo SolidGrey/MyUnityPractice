@@ -226,6 +226,7 @@ public class LevelManager : MonoBehaviour
     private void InitializeUi()
     {
         Transform towerSelector = uI.transform.Find("Canvas/TowerSelector");
+
         for (int i = 0; i < availableBuildings.Length; i++)
         {
             if (availableBuildings[i].building != null && availableBuildings[i].hotkey != null)
@@ -243,7 +244,7 @@ public class LevelManager : MonoBehaviour
                 GameObject building = Instantiate(availableBuildings[i].building);
                 building.transform.SetParent(button.transform.Find("TowerSpot").transform, false);
                 building.transform.localScale = Vector3.one;
-                //ChangeChildrenLayers(building.transform, "3D Object UI");
+                ChangeChildrenLayers(building.transform, "Post-process");
             }
             else
                 Debug.LogError("Property in Available Buildings is empty. Index: " + i);
@@ -252,12 +253,10 @@ public class LevelManager : MonoBehaviour
         void ChangeChildrenLayers(Transform current, string layerName)
         {
             current.gameObject.layer = LayerMask.NameToLayer(layerName);
+
             foreach(Transform child in current)
             {
-                if (child.childCount > 0)
-                    ChangeChildrenLayers(child, layerName);
-                else
-                    child.gameObject.layer = LayerMask.NameToLayer(layerName);
+                ChangeChildrenLayers(child, layerName);
             }
         }
 

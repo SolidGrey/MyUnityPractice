@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
 {
-    public GameObject pooledObject;
-    public int pooledAmount = 10;
-    public bool willGrow = true;
+    [SerializeField]
+    private GameObject pooledObject;
+
+    [SerializeField]
+    private int pooledAmount = 10;
+
+    [SerializeField]
+    private bool willGrow = true;
 
     List<GameObject> pooledObjects = new List<GameObject>();
 
-    void Start()
+    private void Start()
     {
         //Add objects to List
         for (int i = 0; i < pooledAmount; i++)
@@ -27,6 +32,7 @@ public class ObjectPooler : MonoBehaviour
         for (int i = 0; i < pooledObjects.Count; i++)
             if (!pooledObjects[i].activeSelf)
                 return pooledObjects[i];
+
         if (willGrow)
         {
             GameObject obj = Instantiate(pooledObject);

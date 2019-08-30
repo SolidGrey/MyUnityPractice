@@ -7,6 +7,7 @@ TagManager:
   - FreeCell
   - OccupiedCell
   - UICamera
+  - Enemy
   layers:
   - Default
   - TransparentFX
