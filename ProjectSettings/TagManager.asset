@@ -8,6 +8,7 @@ TagManager:
   - OccupiedCell
   - UICamera
   - Enemy
+  - ObjectPoolers
   layers:
   - Default
   - TransparentFX

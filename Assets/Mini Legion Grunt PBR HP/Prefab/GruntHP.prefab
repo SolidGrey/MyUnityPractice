@@ -981,6 +981,7 @@ MonoBehaviour:
   bounty: 1
   damage: 1
   speed: 10
+  currentHealth: 0
   path: []
 --- !u!136 &5105395819844796359
 CapsuleCollider:

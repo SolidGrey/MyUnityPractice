@@ -116,7 +116,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2165338171776609274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.19, z: 0}
+  m_LocalPosition: {x: 0, y: 1.18, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4812080251518562185}
@@ -259,7 +259,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5538401973257122975}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 371038e92eae0d04594abf42f10e4cfa, type: 2}
   m_CullingMode: 0
@@ -284,8 +284,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 2165338171776609274}
   tower: {fileID: 3516260892567924276}
-  triggerZone: {fileID: 0}
-  fireRange: 20
+  triggerZone: {fileID: 5873241377899608876}
+  ammo: {fileID: 7535764051719897480, guid: 0b296a07f12123646baef1af290f85a1, type: 3}
+  coolDown: 0.2
 --- !u!1 &5873241377899608876
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +298,7 @@ GameObject:
   - component: {fileID: 8874656345119363370}
   - component: {fileID: 7465866072106943705}
   - component: {fileID: 8198446756069776986}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TriggerZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +329,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 5
+  m_Radius: 2
   m_Height: 10
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -344,6 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e719ae0aeef102545955b3dfcb009e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!1 &7812072389798750869
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +465,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9195650619566350413}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.581}
+  m_LocalPosition: {x: 0, y: -0, z: 0.678}
   m_LocalScale: {x: 0.21541771, y: 0.21541771, z: 0.21541771}
   m_Children:
   - {fileID: 3974710440556359177}

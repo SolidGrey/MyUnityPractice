@@ -8,11 +8,16 @@ public class PlacementControler : MonoBehaviour
     public Material canPlace;
     public Material canNotPlace;
 
-    private MaterialReplacer _MaterialReplacer;
+    private MaterialReplacer material;
     private string activeMaterial = "CanNotPlace";
     private GameObject handlingObject;
     private GameObject building;
     private Transform activeCell;
+
+    private void Awake()
+    {
+        material = GetComponent<MaterialReplacer>();
+    }
 
     private void Update()
     {
@@ -22,14 +27,20 @@ public class PlacementControler : MonoBehaviour
 
     public void HandleObject(GameObject pressedButton)
     {
-        this.enabled = true;
-        _MaterialReplacer = new MaterialReplacer();
+        if (enabled)
+        {
+            enabled = false;
+            return;
+        }           
+        else
+            enabled = true;
+
         int index = pressedButton.transform.GetSiblingIndex();
         building = levelManager.availableBuildings[index].building;
 
         handlingObject = Instantiate(building);
         handlingObject.transform.position = new Vector3(0, -10f, 0);
-        _MaterialReplacer.ChangeMaterial(handlingObject, canNotPlace);
+        material.ChangeMaterial(handlingObject, canNotPlace);
         activeMaterial = "CanNotPlace";
     }
 
@@ -46,20 +57,23 @@ public class PlacementControler : MonoBehaviour
         else
             handlingObject.SetActive(false);
 
-        GameObject hitObject = hitInfo.collider.gameObject;
-        activeCell = hitObject.transform;
-
-        if (hitObject.tag != "FreeCell" && activeMaterial != "CanNotPlace")
+        if (hitInfo.collider)
         {
-            _MaterialReplacer.ChangeMaterial(handlingObject, canNotPlace);
-            activeMaterial = "CanNotPlace";
-        }
+            GameObject hitObject = hitInfo.collider.gameObject;
+            activeCell = hitObject.transform;
 
-        if (hitObject.tag == "FreeCell" && activeMaterial != "CanPlace")
-        {
-            _MaterialReplacer.ChangeMaterial(handlingObject, canPlace);
-            activeMaterial = "CanPlace";
-        }
+            if (hitObject.tag != "FreeCell" && activeMaterial != "CanNotPlace")
+            {
+                material.ChangeMaterial(handlingObject, canNotPlace);
+                activeMaterial = "CanNotPlace";
+            }
+
+            if (hitObject.tag == "FreeCell" && activeMaterial != "CanPlace")
+            {
+                material.ChangeMaterial(handlingObject, canPlace);
+                activeMaterial = "CanPlace";
+            }
+        }  
     }
 
     private void ReleaseIfClicked()

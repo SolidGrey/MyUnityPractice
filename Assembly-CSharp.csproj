@@ -62,8 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Client\Scripts\BuildingSelector.cs" />
-    <Compile Include="Assets\Client\Scripts\Bullet.cs" />
     <Compile Include="Assets\Client\Scripts\BulletController.cs" />
     <Compile Include="Assets\Client\Scripts\Enemy.cs" />
     <Compile Include="Assets\Client\Scripts\EnemyManager.cs" />
@@ -72,7 +70,6 @@
     <Compile Include="Assets\Client\Scripts\ObjectPooler.cs" />
     <Compile Include="Assets\Client\Scripts\PlacementControler.cs" />
     <Compile Include="Assets\Client\Scripts\Player.cs" />
-    <Compile Include="Assets\Client\Scripts\Shoot.cs" />
     <Compile Include="Assets\Client\Scripts\TargetTracker.cs" />
     <Compile Include="Assets\Client\Scripts\TowerController.cs" />
     <Compile Include="Assets\PostProcessingTextureOverlay\Scripts\ColorEffect.cs" />
