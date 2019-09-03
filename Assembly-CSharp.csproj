@@ -65,6 +65,7 @@
     <Compile Include="Assets\Client\Scripts\BulletController.cs" />
     <Compile Include="Assets\Client\Scripts\Enemy.cs" />
     <Compile Include="Assets\Client\Scripts\EnemyManager.cs" />
+    <Compile Include="Assets\Client\Scripts\HotkeyManager.cs" />
     <Compile Include="Assets\Client\Scripts\LevelManager.cs" />
     <Compile Include="Assets\Client\Scripts\MaterialReplacer.cs" />
     <Compile Include="Assets\Client\Scripts\ObjectPooler.cs" />
@@ -72,14 +73,10 @@
     <Compile Include="Assets\Client\Scripts\Player.cs" />
     <Compile Include="Assets\Client\Scripts\TargetTracker.cs" />
     <Compile Include="Assets\Client\Scripts\TowerController.cs" />
-    <Compile Include="Assets\PostProcessingTextureOverlay\Scripts\ColorEffect.cs" />
-    <Compile Include="Assets\PostProcessingTextureOverlay\Scripts\HardLight.cs" />
+    <Compile Include="Assets\Client\Scripts\TowerSelectButton.cs" />
     <Compile Include="Assets\PostProcessingTextureOverlay\Scripts\TextureOverlay.cs" />
-    <Compile Include="Assets\SpawnMob.cs" />
-    <None Include="Assets\PostProcessingTextureOverlay\Scripts\Resources\ColorEffect.shader" />
     <None Include="Assets\Client\Resources\Level1.txt" />
     <None Include="Assets\PostProcessingTextureOverlay\Scripts\Resources\TextureOverlay.shader" />
-    <None Include="Assets\PostProcessingTextureOverlay\Scripts\Resources\HardLight.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Unity Projects/Tower Defence/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

@@ -244,7 +244,7 @@ public class LevelManager : MonoBehaviour
                 GameObject building = Instantiate(availableBuildings[i].building);
                 building.transform.SetParent(button.transform.Find("TowerSpot").transform, false);
                 building.transform.localScale = Vector3.one;
-                ChangeChildrenLayers(building.transform, "Post-process");
+                ChangeChildrenLayers(building.transform, "UI");
             }
             else
                 Debug.LogError("Property in Available Buildings is empty. Index: " + i);

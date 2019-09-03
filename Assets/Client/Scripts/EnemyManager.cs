@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     [System.Serializable]
-    public class SpawnEnemyParam
+    public struct SpawnEnemyParam
     {
         public ObjectPooler pooler;
         public float cooldown;

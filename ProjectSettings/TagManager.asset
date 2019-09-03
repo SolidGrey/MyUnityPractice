@@ -9,6 +9,8 @@ TagManager:
   - UICamera
   - Enemy
   - ObjectPoolers
+  - LevelManager
+  - PlacementController
   layers:
   - Default
   - TransparentFX

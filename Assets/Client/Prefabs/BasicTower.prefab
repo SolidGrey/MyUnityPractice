@@ -286,7 +286,7 @@ MonoBehaviour:
   tower: {fileID: 3516260892567924276}
   triggerZone: {fileID: 5873241377899608876}
   ammo: {fileID: 7535764051719897480, guid: 0b296a07f12123646baef1af290f85a1, type: 3}
-  coolDown: 0.2
+  coolDown: 0.5
 --- !u!1 &5873241377899608876
 GameObject:
   m_ObjectHideFlags: 0

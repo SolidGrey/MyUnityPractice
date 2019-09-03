@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5283746443335548637}
   m_Layer: 0
   m_Name: PlacementController
-  m_TagString: Untagged
+  m_TagString: PlacementController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelManager: {fileID: 0}
-  canPlace: {fileID: 0}
-  canNotPlace: {fileID: 0}
+  canPlace: {fileID: 2100000, guid: 654b339cca9f649418e1a049d32df163, type: 2}
+  canNotPlace: {fileID: 2100000, guid: 3a43b0214aa703f45a2449a7dd612459, type: 2}
 --- !u!114 &5283746443335548637
 MonoBehaviour:
   m_ObjectHideFlags: 0

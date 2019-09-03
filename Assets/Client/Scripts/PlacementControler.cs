@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlacementControler : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PlacementControler : MonoBehaviour
     private GameObject building;
     private Transform activeCell;
 
-    private void Awake()
+    private void Start()
     {
         material = GetComponent<MaterialReplacer>();
     }
@@ -27,17 +28,23 @@ public class PlacementControler : MonoBehaviour
 
     public void HandleObject(GameObject pressedButton)
     {
-        if (enabled)
-        {
-            enabled = false;
-            return;
-        }           
-        else
-            enabled = true;
-
         int index = pressedButton.transform.GetSiblingIndex();
         building = levelManager.availableBuildings[index].building;
 
+        if (handlingObject)
+        {
+            if (building.name == handlingObject.name)
+            {
+                
+                Destroy(handlingObject);
+                return;
+            }
+            else
+            {
+                Destroy(handlingObject);
+            }           
+        }
+            
         handlingObject = Instantiate(building);
         handlingObject.transform.position = new Vector3(0, -10f, 0);
         material.ChangeMaterial(handlingObject, canNotPlace);
@@ -46,6 +53,9 @@ public class PlacementControler : MonoBehaviour
 
     private void MoveHandlingObjectToMouse()
     {
+        if (!handlingObject)
+            return;
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
         Physics.Raycast(ray, out hitInfo);
@@ -78,14 +88,16 @@ public class PlacementControler : MonoBehaviour
 
     private void ReleaseIfClicked()
     {
-        if (Input.GetMouseButtonDown(0) && activeCell.tag == "FreeCell")
+        if (!handlingObject)
+            return;
+
+        if (Input.GetMouseButtonDown(0) && activeCell.tag == "FreeCell" && !EventSystem.current.IsPointerOverGameObject())
         {
             GameObject buildingClone = Instantiate(building);
             buildingClone.transform.position = handlingObject.transform.position;
             activeCell.transform.tag = "OccupiedCell";
 
             Destroy(handlingObject);
-            this.enabled = false;
         }
     }
 }
