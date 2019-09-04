@@ -26,8 +26,8 @@ public class HotkeyManager : MonoBehaviour
 
     public class KeyboardBindings
     {
-        private List<KeyCode> _keys;
-        private List<GameAction> _gameActions;
+        private List<KeyCode> _keys = new List<KeyCode>();
+        private List<GameAction> _gameActions = new List<GameAction>();
 
         public KeyCode GetKeyCode(GameAction gameAction)
         {
@@ -51,9 +51,34 @@ public class HotkeyManager : MonoBehaviour
 
         public void SetBind(KeyCode key, GameAction gameAction)
         {
+            if (gameAction == GameAction.None) //Key should have a gameAction
+                return;
+
+            for (int i = 0; i < _gameActions.Count; i++) 
+            {
+                if (gameAction == _gameActions[i])
+                {
+                    UnbindKey(); //Unbind same key from other gameAction if exists
+                    _keys[i] = key;
+                    return;
+                }
+            }
+
+            UnbindKey();
             _keys.Add(key);
             _gameActions.Add(gameAction);
+
+            void UnbindKey()
+            {
+                for (int i = 0; i < _keys.Count; i++)
+                    if (key == _keys[i])
+                    {
+                        _keys[i] = KeyCode.None;
+                        break;
+                    }
+            }
         }
+
     }
 
     #endregion
@@ -67,6 +92,8 @@ public class HotkeyManager : MonoBehaviour
 
     private void InitializeKeyboardBindings()
     {
+        keyboardBindings = new KeyboardBindings();
+
         foreach(KeyboardBinding binding in _keyboardBindings)
             keyboardBindings.SetBind(binding.key, binding.gameAction);
     }

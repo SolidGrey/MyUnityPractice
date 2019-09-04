@@ -242,7 +242,7 @@ public class LevelManager : MonoBehaviour
                 hotkey.text = availableBuildings[i].hotkey;
 
                 GameObject building = Instantiate(availableBuildings[i].building);
-                building.transform.SetParent(button.transform.Find("TowerSpot").transform, false);
+                building.transform.SetParent(button.transform.Find("BuildingSpot").transform, false);
                 building.transform.localScale = Vector3.one;
                 ChangeChildrenLayers(building.transform, "UI");
             }
