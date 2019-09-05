@@ -49,5 +49,6 @@ MonoBehaviour:
   despawner: {fileID: 2767787959890598059, guid: 3fdb5d789c944f1469de19a6bcf0ebe5,
     type: 3}
   uI: {fileID: 0}
-  towerButton: {fileID: 0}
+  towerButton: {fileID: 96892463314885595, guid: 819b2f9880769e4458f0edc64db83da2,
+    type: 3}
   availableBuildings: []

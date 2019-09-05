@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Client\Scripts\Building.cs" />
     <Compile Include="Assets\Client\Scripts\BulletController.cs" />
     <Compile Include="Assets\Client\Scripts\ButtonProperties.cs" />
     <Compile Include="Assets\Client\Scripts\Enemy.cs" />

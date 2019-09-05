@@ -160,6 +160,11 @@ PrefabInstance:
       propertyPath: availableBuildings.Array.data[0].hotkey
       value: Q
       objectReference: {fileID: 0}
+    - target: {fileID: 3682589741034709568, guid: a2103097897124e488b10544474147b3,
+        type: 3}
+      propertyPath: availableBuildings.Array.data[0].gameAction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3682589741034709569, guid: a2103097897124e488b10544474147b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -497,7 +502,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 3.67e-43, y: 7.1e-44, z: 0, w: 6.380325e-37}
+  m_BoundingSphereOverride: {x: 0.078125, y: 0.06640625, z: 0.02734375, w: -0.03125}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1122,6 +1127,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794446788020491929, guid: 7d9b39ee5b19a5d4290f1855152b5229,
+        type: 3}
+      propertyPath: _keyboardBindings.Array.data[0].key
+      value: 107
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d9b39ee5b19a5d4290f1855152b5229, type: 3}

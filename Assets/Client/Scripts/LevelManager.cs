@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
     public struct AvailableBuildings
     {
         public GameObject building;
-        public string hotkey;
+        public HotkeyManager.GameAction gameAction;
     }
 
     public List<List<Transform>> routes;
@@ -229,18 +229,15 @@ public class LevelManager : MonoBehaviour
 
         for (int i = 0; i < availableBuildings.Length; i++)
         {
-            if (availableBuildings[i].building != null && availableBuildings[i].hotkey != null)
+            GameObject availableBuilding = availableBuildings[i].building;
+
+            if (availableBuilding)
             {
                 GameObject button = Instantiate(towerButton);
+                button.GetComponent<ButtonProperties>().InitializeButton(availableBuilding.GetComponent<Building>().buildingName, availableBuildings[i].gameAction);
                 button.transform.SetParent(towerSelector, false);
                 button.transform.localPosition = new Vector3(0, 0, 0);
-
-                Text name = button.transform.Find("Button/Name").GetComponent(typeof(Text)) as Text;
-                name.text = availableBuildings[i].building.name;
-
-                Text hotkey = button.transform.Find("Button/Hotkey").GetComponent(typeof(Text)) as Text;
-                hotkey.text = availableBuildings[i].hotkey;
-
+                
                 GameObject building = Instantiate(availableBuildings[i].building);
                 building.transform.SetParent(button.transform.Find("BuildingSpot").transform, false);
                 building.transform.localScale = Vector3.one;

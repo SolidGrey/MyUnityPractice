@@ -4,5 +4,8 @@ using UnityEngine;
 
 public interface IButton
 {
-    void InitializeButton();
+    string Name { get; set; }
+    HotkeyManager.GameAction Action { get; set; }
+
+    void InitializeButton(string name, HotkeyManager.GameAction action);
 }

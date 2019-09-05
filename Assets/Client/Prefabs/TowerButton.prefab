@@ -50,6 +50,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02f15b5bf3468de4ca4ca4b394d4634a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: BasicTower
+  _action: 1
+  buttonName: {fileID: 8435496570118970201}
+  buttonHotkey: {fileID: 8435496568626729067}
 --- !u!1 &1463087150707457080
 GameObject:
   m_ObjectHideFlags: 0

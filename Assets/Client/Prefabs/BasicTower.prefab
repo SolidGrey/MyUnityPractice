@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 2634133890319282404}
   - component: {fileID: 6081398786169012359}
   - component: {fileID: 8253685311113487888}
+  - component: {fileID: 2987925510380425109}
   m_Layer: 0
   m_Name: BasicTower
   m_TagString: Untagged
@@ -287,6 +288,20 @@ MonoBehaviour:
   triggerZone: {fileID: 5873241377899608876}
   ammo: {fileID: 7535764051719897480, guid: 0b296a07f12123646baef1af290f85a1, type: 3}
   coolDown: 0.5
+--- !u!114 &2987925510380425109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5538401973257122975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c971871cbfd604e987e17114813659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingName: Basic Tower
+  price: 1
 --- !u!1 &5873241377899608876
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ TagManager:
   - ObjectPoolers
   - LevelManager
   - PlacementController
+  - HotkeyManager
   layers:
   - Default
   - TransparentFX
