@@ -77,6 +77,7 @@
     <Compile Include="Assets\Client\Scripts\TargetTracker.cs" />
     <Compile Include="Assets\Client\Scripts\TowerController.cs" />
     <Compile Include="Assets\Client\Scripts\TowerSelectButton.cs" />
+    <Compile Include="Assets\Client\Scripts\TowerSelector.cs" />
     <Compile Include="Assets\PostProcessingTextureOverlay\Scripts\TextureOverlay.cs" />
     <None Include="Assets\Client\Resources\Level1.txt" />
     <None Include="Assets\PostProcessingTextureOverlay\Scripts\Resources\TextureOverlay.shader" />

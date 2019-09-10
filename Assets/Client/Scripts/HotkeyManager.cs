@@ -6,7 +6,7 @@ public class HotkeyManager : MonoBehaviour
 {
     #region Attributes
 
-    public enum GameAction {None, SelectBuilding0}
+    public enum GameAction {None, SelectBuilding0, SelectBuilding1, SelectBuilding2 }
 
     [SerializeField]
     private KeyboardBinding[] _keyboardBindings;

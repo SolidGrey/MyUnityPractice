@@ -225,33 +225,39 @@ public class LevelManager : MonoBehaviour
 
     private void InitializeUi()
     {
-        Transform towerSelector = uI.transform.Find("Canvas/TowerSelector");
+        TowerSelector towerSelector = uI.transform.Find("Canvas/TowerSelector").GetComponent<TowerSelector>();
 
         for (int i = 0; i < availableBuildings.Length; i++)
         {
-            GameObject availableBuilding = availableBuildings[i].building;
-
-            if (availableBuilding)
+            if (availableBuildings[i].building)
             {
-                GameObject button = Instantiate(towerButton);
-                button.GetComponent<ButtonProperties>().InitializeButton(availableBuilding.GetComponent<Building>().buildingName, availableBuildings[i].gameAction);
-                button.transform.SetParent(towerSelector, false);
-                button.transform.localPosition = new Vector3(0, 0, 0);
-                
-                GameObject building = Instantiate(availableBuildings[i].building);
-                building.transform.SetParent(button.transform.Find("BuildingSpot").transform, false);
-                building.transform.localScale = Vector3.one;
-                ChangeChildrenLayers(building.transform, "UI");
+                AddButton(i);
             }
             else
                 Debug.LogError("Property in Available Buildings is empty. Index: " + i);
+        }
+
+        void AddButton(int buildingIndex)
+        {
+            GameObject availableBuilding = availableBuildings[buildingIndex].building;
+            HotkeyManager.GameAction availableGameAction = availableBuildings[buildingIndex].gameAction;
+
+            GameObject button = Instantiate(towerButton);
+            button.GetComponent<ButtonProperties>().InitializeButton(availableBuilding.GetComponent<Building>().buildingName, availableGameAction);
+            towerSelector.PlaceButton(button);
+
+            GameObject building = Instantiate(availableBuilding);
+            building.transform.SetParent(button.transform.Find("BuildingSpot").transform, false);
+            building.transform.localScale = Vector3.one;
+
+            ChangeChildrenLayers(building.transform, "UI");
         }
 
         void ChangeChildrenLayers(Transform current, string layerName)
         {
             current.gameObject.layer = LayerMask.NameToLayer(layerName);
 
-            foreach(Transform child in current)
+            foreach (Transform child in current)
             {
                 ChangeChildrenLayers(child, layerName);
             }

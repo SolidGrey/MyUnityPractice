@@ -136,7 +136,7 @@ PrefabInstance:
     - target: {fileID: 3682589741034709568, guid: a2103097897124e488b10544474147b3,
         type: 3}
       propertyPath: availableBuildings.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3682589741034709568, guid: a2103097897124e488b10544474147b3,
         type: 3}
@@ -164,6 +164,28 @@ PrefabInstance:
         type: 3}
       propertyPath: availableBuildings.Array.data[0].gameAction
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3682589741034709568, guid: a2103097897124e488b10544474147b3,
+        type: 3}
+      propertyPath: availableBuildings.Array.data[1].building
+      value: 
+      objectReference: {fileID: 5538401973257122975, guid: 54e5c1fad7d0d2f4980ce80f72872439,
+        type: 3}
+    - target: {fileID: 3682589741034709568, guid: a2103097897124e488b10544474147b3,
+        type: 3}
+      propertyPath: availableBuildings.Array.data[1].gameAction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3682589741034709568, guid: a2103097897124e488b10544474147b3,
+        type: 3}
+      propertyPath: availableBuildings.Array.data[2].building
+      value: 
+      objectReference: {fileID: 5538401973257122975, guid: 54e5c1fad7d0d2f4980ce80f72872439,
+        type: 3}
+    - target: {fileID: 3682589741034709568, guid: a2103097897124e488b10544474147b3,
+        type: 3}
+      propertyPath: availableBuildings.Array.data[2].gameAction
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3682589741034709569, guid: a2103097897124e488b10544474147b3,
         type: 3}
@@ -502,7 +524,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0.078125, y: 0.06640625, z: 0.02734375, w: -0.03125}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 4e-45}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1130,8 +1152,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7794446788020491929, guid: 7d9b39ee5b19a5d4290f1855152b5229,
         type: 3}
+      propertyPath: _keyboardBindings.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794446788020491929, guid: 7d9b39ee5b19a5d4290f1855152b5229,
+        type: 3}
       propertyPath: _keyboardBindings.Array.data[0].key
-      value: 107
+      value: 113
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794446788020491929, guid: 7d9b39ee5b19a5d4290f1855152b5229,
+        type: 3}
+      propertyPath: _keyboardBindings.Array.data[1].key
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794446788020491929, guid: 7d9b39ee5b19a5d4290f1855152b5229,
+        type: 3}
+      propertyPath: _keyboardBindings.Array.data[1].gameAction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794446788020491929, guid: 7d9b39ee5b19a5d4290f1855152b5229,
+        type: 3}
+      propertyPath: _keyboardBindings.Array.data[2].key
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794446788020491929, guid: 7d9b39ee5b19a5d4290f1855152b5229,
+        type: 3}
+      propertyPath: _keyboardBindings.Array.data[2].gameAction
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d9b39ee5b19a5d4290f1855152b5229, type: 3}
@@ -1204,72 +1251,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62b653627a4d1b64ea0d30c8844a4ed7, type: 3}
---- !u!1001 &6960953424716302206
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 640296120932641861, guid: 6b135841796b3834d835a3e0b7707977,
-        type: 3}
-      propertyPath: m_Name
-      value: BuildingPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 3311732255602538359, guid: 6b135841796b3834d835a3e0b7707977,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 68.65625
-      objectReference: {fileID: 0}
-    - target: {fileID: 3311732255602538359, guid: 6b135841796b3834d835a3e0b7707977,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 45.90625
-      objectReference: {fileID: 0}
-    - target: {fileID: 3311732255602538359, guid: 6b135841796b3834d835a3e0b7707977,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -57.28125
-      objectReference: {fileID: 0}
-    - target: {fileID: 3311732255602538359, guid: 6b135841796b3834d835a3e0b7707977,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3311732255602538359, guid: 6b135841796b3834d835a3e0b7707977,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3311732255602538359, guid: 6b135841796b3834d835a3e0b7707977,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3311732255602538359, guid: 6b135841796b3834d835a3e0b7707977,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3311732255602538359, guid: 6b135841796b3834d835a3e0b7707977,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 3311732255602538359, guid: 6b135841796b3834d835a3e0b7707977,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3311732255602538359, guid: 6b135841796b3834d835a3e0b7707977,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3311732255602538359, guid: 6b135841796b3834d835a3e0b7707977,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6b135841796b3834d835a3e0b7707977, type: 3}
